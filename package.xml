@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>tractor_multi_cam_publisher</name>
+  <version>0.1.0</version>
+  <description>Multi-camera publisher using GStreamer and ROS2</description>
+
+  <maintainer email="gunreben@wifa.uni-leipzig.de">Lorenz Gunreben</maintainer>
+  <license>Apache License 2.0</license>
+
+  <depend>rclcpp</depend>
+  <depend>sensor_msgs</depend>
+
+  <build_depend>gstreamer-1.0</build_depend>
+  <build_depend>gstreamer-app-1.0</build_depend>
+
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>
