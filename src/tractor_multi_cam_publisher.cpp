@@ -23,7 +23,7 @@ public:
 
     // GStreamer Pipeline Setup for H.264
     std::string pipeline_str = 
-      "rtspsrc location=rtsp://" + ip + ":554/stream latency=0 ! "
+      "rtspsrc location=rtsp://" + ip + ":8554/h264 latency=0 ! "
       "rtph264depay ! h264parse ! nvv4l2decoder ! "
       "nvvidconv ! video/x-raw,format=I420 ! "
       "nvjpegenc ! appsink name=appsink";
