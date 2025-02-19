@@ -23,20 +23,25 @@ public:
       "side_right"
     };
 
+    auto qos = rclcpp::QoS(rclcpp::KeepLast(10))
+    .best_effort()
+    .durability_volatile();
+
     // Create one publisher per camera, publishing to /camera/<name>/camera_info
     for (const auto &name : camera_names_) {
       std::string topic = "/camera/" + name + "/camera_info";
-      auto pub = this->create_publisher<sensor_msgs::msg::CameraInfo>(topic, 10);
+
+      auto pub = this->create_publisher<sensor_msgs::msg::CameraInfo>(topic, qos);
       publishers_.push_back(pub);
-      RCLCPP_INFO(this->get_logger(), "Publisher created for: %s", topic.c_str());
+      //RCLCPP_INFO(this->get_logger(), "Publisher created for: %s", topic.c_str());
     }
 
     // Set up the static CameraInfo message (intrinsics, distortion, etc.)
     setupCameraInfo();
 
-    // Create a timer to publish at ~10 Hz
+    // Create a timer to publish once per second
     timer_ = this->create_wall_timer(
-      100ms, std::bind(&CameraInfoPublisher::timerCallback, this));
+      1000ms, std::bind(&CameraInfoPublisher::timerCallback, this));
   }
 
 private:
@@ -94,11 +99,11 @@ private:
       camera_info_.header.frame_id = "camera_" + camera_names_[i] + "_frame";
 
       publishers_[i]->publish(camera_info_);
-      RCLCPP_INFO(
+      /*RCLCPP_INFO(
         this->get_logger(),
         "Published camera info on /camera/%s/camera_info",
         camera_names_[i].c_str()
-      );
+      );*/
     }
   }
 

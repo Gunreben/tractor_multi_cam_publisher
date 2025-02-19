@@ -10,7 +10,8 @@
 class TractorMultiCamPublisher : public rclcpp::Node {
 public:
   TractorMultiCamPublisher(const std::string& ip, const std::string& label) 
-    : Node("tractor_multi_cam_publisher_" + label) {
+    : Node("tractor_multi_cam_publisher_" + label),
+    label_(label)   {
     
     // QoS Configuration
     auto qos = rclcpp::QoS(rclcpp::KeepLast(10))
@@ -52,6 +53,7 @@ public:
   }
 
 private:
+  std::string label_;
   void process_frames() {
     while (rclcpp::ok() && running_) {
       GstSample* sample = gst_app_sink_try_pull_sample(appsink_, GST_MSECOND);
@@ -63,6 +65,10 @@ private:
         auto msg = std::make_unique<sensor_msgs::msg::CompressedImage>();
         msg->header.stamp = this->now();
         msg->format = "jpeg";
+
+        msg->header.stamp = this->now();
+        msg->header.frame_id = "camera/" + label_; 
+
         msg->data.assign(map.data, map.data + map.size);
         publisher_->publish(std::move(msg));
         gst_buffer_unmap(buffer, &map);
