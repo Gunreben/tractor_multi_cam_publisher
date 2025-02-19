@@ -11,5 +11,13 @@ def generate_launch_description():
             output='screen',
             parameters=[{
             }]
+        ),
+        Node(
+            package='tractor_multi_cam_publisher',
+            executable='camera_info_publisher',
+            name='camera_info_publisher',
+            output='screen',
+            parameters=[{
+            }]
         )
     ])
