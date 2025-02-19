@@ -1,10 +1,14 @@
 #!/usr/bin/env python3
 
+import os
+
 from launch import LaunchDescription
 from launch.actions import DeclareLaunchArgument, IncludeLaunchDescription
 from launch.substitutions import LaunchConfiguration
 from launch.launch_description_sources import PythonLaunchDescriptionSource
+
 from launch_ros.substitutions import FindPackageShare
+from launch_ros.actions import Node
 
 def generate_launch_description():
     # Find the package directories
@@ -40,24 +44,75 @@ def generate_launch_description():
         description='IP address of the Ouster sensor.'
     )
     
+    #--------------------------------------------------------------------------
+    # robot_state_publisher for vario700_sensorrig URDF
+    #--------------------------------------------------------------------------
+    vario700_pkg_prefix = FindPackageShare('vario700_sensorrig').find('vario700_sensorrig')
+    # Path to the URDF
+    vario700_urdf = os.path.join(vario700_pkg_prefix, 'urdf', 'vario700_sensorrig.urdf')
+
+    # Read the URDF file’s contents
+    with open(vario700_urdf, 'r') as f:
+        robot_description = f.read()
+
+    # Create the robot_state_publisher node
+    robot_state_publisher_node = Node(
+        package='robot_state_publisher',
+        executable='robot_state_publisher',
+        name='robot_state_publisher',
+        output='screen',
+        parameters=[
+            {'robot_description': robot_description}
+        ]
+    )
+    
+    #--------------------------------------------------------------------------
+    # Add RViz2 node using vario700_sensorrig.rviz
+    #--------------------------------------------------------------------------
+    vario700_rviz_config = os.path.join(vario700_pkg_prefix, 'rviz', 'vario700_sensorrig.rviz')
+    
+    rviz_node = Node(
+        package='rviz2',
+        executable='rviz2',
+        name='rviz2',
+        output='screen',
+        arguments=['-d', vario700_rviz_config]
+    )
+    
+    #--------------------------------------------------------------------------
+    # Combine everything into the LaunchDescription
+    #--------------------------------------------------------------------------
     return LaunchDescription([
         camera_model_arg,
         novatel_ip_arg,
         ouster_ip_arg,
+        
+        # Tractor multi camera
         IncludeLaunchDescription(tractor_launch_file),
-        IncludeLaunchDescription(blickfeld_launch_file),
+        
+        # Blickfeld deactivated till presentation
+        #IncludeLaunchDescription(blickfeld_launch_file),
+        
+        # Ouster LiDAR
         IncludeLaunchDescription(
             ouster_launch_file,
             launch_arguments=[('sensor_hostname', LaunchConfiguration('sensor_hostname'))]
         ),
+        
+        # ZED camera
         IncludeLaunchDescription(
             zed_launch_file,
             launch_arguments=[('camera_model', LaunchConfiguration('camera_model'))]
         ),
+        
+        # Novatel OEM7
         IncludeLaunchDescription(
             novatel_launch_file,
             launch_arguments=[('oem7_ip_addr', LaunchConfiguration('oem7_ip_addr'))]
-        )
+        ),
+        
+        robot_state_publisher_node,
+        rviz_node
     ])
 
 if __name__ == '__main__':
