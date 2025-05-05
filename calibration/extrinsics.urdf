@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<?xml-model href="https://raw.githubusercontent.com/ros/urdfdom/master/xsd/urdf.xsd" ?>
+<robot name="leipzig.leipzig0" xmlns="http://www.ros.org">
+  <link name="ouster"/>
+  <link name="camera_rear_left"/>
+  <link name="camera_rear_mid"/>
+  <link name="camera_rear_right"/>
+  <link name="camera_side_left"/>
+  <link name="camera_side_right"/>
+  <link name="ouster_imu"/>
+  <link name="zed_zed_node_left_rect_color"/>
+  <link name="zed_zed_node_right_rect_color"/>
+  <joint name="camera_rear_left_joint" type="fixed">
+    <origin xyz="0.987213 -0.716739 -1.10573" rpy="0.338194 -2.49739 0.754168"/>
+    <parent link="ouster"/>
+    <child link="camera_rear_left"/>
+  </joint>
+  <joint name="camera_rear_mid_joint" type="fixed">
+    <origin xyz="1.08013 0.0128897 -1.15956" rpy="0.188916 -3.11455 1.56053"/>
+    <parent link="ouster"/>
+    <child link="camera_rear_mid"/>
+  </joint>
+  <joint name="camera_rear_right_joint" type="fixed">
+    <origin xyz="0.979937 0.739726 -1.09765" rpy="0.467141 2.53466 2.30594"/>
+    <parent link="ouster"/>
+    <child link="camera_rear_right"/>
+  </joint>
+  <joint name="camera_side_left_joint" type="fixed">
+    <origin xyz="0.536304 -0.868147 -0.633051" rpy="0.791996 -2.31362 0.0204264"/>
+    <parent link="ouster"/>
+    <child link="camera_side_left"/>
+  </joint>
+  <joint name="camera_side_right_joint" type="fixed">
+    <origin xyz="0.522142 0.877865 -0.631033" rpy="-2.27836 0.834522 0.0180667"/>
+    <parent link="ouster"/>
+    <child link="camera_side_right"/>
+  </joint>
+  <joint name="ouster_imu_joint" type="fixed">
+    <origin xyz="0 0 0" rpy="0.031763 -0.00150674 3.10715"/>
+    <parent link="ouster"/>
+    <child link="ouster_imu"/>
+  </joint>
+  <joint name="zed_zed_node_left_rect_color_joint" type="fixed">
+    <origin xyz="-0.0340776 -0.061614 0.132995" rpy="-1.20172 -0.0212631 1.58427"/>
+    <parent link="ouster"/>
+    <child link="zed_zed_node_left_rect_color"/>
+  </joint>
+  <joint name="zed_zed_node_right_rect_color_joint" type="fixed">
+    <origin xyz="-0.0379495 0.0590217 0.136208" rpy="-1.20242 -0.0210382 1.58383"/>
+    <parent link="ouster"/>
+    <child link="zed_zed_node_right_rect_color"/>
+  </joint>
+</robot>

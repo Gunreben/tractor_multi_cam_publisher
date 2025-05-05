@@ -4,6 +4,7 @@ project(tractor_multi_cam_publisher)
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 find_package(sensor_msgs REQUIRED)
+find_package(camera_calibration_parsers REQUIRED)
 find_package(PkgConfig REQUIRED)
 pkg_check_modules(GSTREAMER REQUIRED gstreamer-1.0 gstreamer-app-1.0)
 
@@ -12,7 +13,11 @@ add_executable(tractor_multi_cam_publisher
 )
 
 add_executable(camera_info_publisher src/camera_info_publisher.cpp)
-ament_target_dependencies(camera_info_publisher rclcpp sensor_msgs)
+ament_target_dependencies(camera_info_publisher
+  rclcpp
+  sensor_msgs
+  camera_calibration_parsers
+)
 
 ament_target_dependencies(tractor_multi_cam_publisher
   rclcpp
@@ -34,6 +39,12 @@ install(TARGETS
 
 install(DIRECTORY launch
   DESTINATION share/${PROJECT_NAME}
+)
+
+# Install the calibration directory containing YAML files
+install(DIRECTORY calibration/
+  DESTINATION share/${PROJECT_NAME}/calibration
+  FILES_MATCHING PATTERN "*.yaml"
 )
 
 ament_package()

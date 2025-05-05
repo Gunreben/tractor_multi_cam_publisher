@@ -1,0 +1,3 @@
+# Calibration Anywhere by Main Street Autonomy
+# log: leipzig0
+{image_width: 1280, image_height: 720, camera_name: camera_rear_left, camera_matrix: {rows: 3, cols: 3, data: [635.14980060911182, 0, 633.52016520517975, 0, 635.05976308600123, 362.63662710722008, 0, 0, 1]}, distortion_model: equidistant, distortion_coefficients: {rows: 1, cols: 5, data: [-0.036177818217309594, -0.00018903051941850462, -0.0079178562907848814, 0.0025027545964331588, 0]}, rectification_matrix: {rows: 3, cols: 3, data: [1, 0, 0, 0, 1, 0, 0, 0, 1]}, readout_time_sec: 0.010891877302572794, projection_matrix: {rows: 3, cols: 4, data: [635.14980060911182, 0, 633.52016520517975, 0, 0, 635.05976308600123, 362.63662710722008, 0, 0, 0, 1, 0]}}

@@ -1,0 +1,10 @@
+# Calibration Anywhere by Main Street Autonomy
+# log: leipzig0
+# Time offsets are listed in seconds.
+/camera/rear_left/image_raw/compressed: -0.059130151000000006
+/camera/rear_mid/image_raw/compressed: -0.066794571000000011
+/camera/rear_right/image_raw/compressed: -0.083128328000000001
+/camera/side_left/image_raw/compressed: -0.063660586000000005
+/camera/side_right/image_raw/compressed: -0.064838761000000009
+/zed/zed_node/left/image_rect_color: 0.025195895000000003
+/zed/zed_node/right/image_rect_color: 0.024970531000000001

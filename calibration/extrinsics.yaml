@@ -1,0 +1,38 @@
+# leipzig0
+# Calibration Anywhere by Main Street Autonomy
+# log: leipzig0
+# 
+# Position xyz; Quaternions xyzw
+# [ x_m, y_m, z_m, qx, qy, qz, qw]
+camera_rear_left:
+  parent: "ouster"
+  child: "camera_rear_left"
+  value: [0.987213, -0.716739, -1.105731, 0.393825, -0.849733, 0.263320, 0.231342]
+camera_rear_mid:
+  parent: "ouster"
+  child: "camera_rear_mid"
+  value: [1.080126, 0.012890, -1.159563, 0.701174, -0.706598, 0.076496, -0.056778]
+camera_rear_right:
+  parent: "ouster"
+  child: "camera_rear_right"
+  value: [0.979937, 0.739726, -1.097654, 0.820460, -0.439935, -0.176081, -0.319841]
+camera_side_left:
+  parent: "ouster"
+  child: "camera_side_left"
+  value: [0.536304, -0.868147, -0.633051, 0.163783, -0.843045, 0.356916, 0.367507]
+camera_side_right:
+  parent: "ouster"
+  child: "camera_side_right"
+  value: [0.522142, 0.877865, -0.631033, -0.831860, 0.162027, 0.371532, 0.379105]
+ouster_imu:
+  parent: "ouster"
+  child: "ouster_imu"
+  value: [0.000000, 0.000000, 0.000000, 0.001027, 0.015866, 0.999726, 0.017205]
+zed_zed_node_left_rect_color:
+  parent: "ouster"
+  child: "zed_zed_node_left_rect_color"
+  value: [-0.034078, -0.061614, 0.132995, -0.390798, -0.408584, 0.582918, 0.583561]
+zed_zed_node_right_rect_color:
+  parent: "ouster"
+  child: "zed_zed_node_right_rect_color"
+  value: [-0.037949, 0.059022, 0.136208, -0.391159, -0.408639, 0.582691, 0.583506]
