@@ -35,7 +35,7 @@ public:
     mode_ = str_to_mode(mode_str);
 
     // ----- QoS ------------------------------------------------------------
-    auto qos = rclcpp::QoS(rclcpp::KeepLast(10)).best_effort().durability_volatile();
+    auto qos = rclcpp::QoS(rclcpp::KeepLast(10)).reliable().durability_volatile();
 
     // ----- Publishers -----------------------------------------------------
     // Create base topic publisher
@@ -117,12 +117,14 @@ private:
     case OutputMode::RAW:
       // Raw only - use I420 format which is more widely supported
       return src +
-             "nvvideoconvert ! video/x-raw(memory:NVMM),format=NV12 ! "
-             "queue max-size-buffers=2 leaky=downstream ! " 
-             "nvvideoconvert ! video/x-raw,format=I420 ! "
-             "queue max-size-buffers=2 leaky=downstream ! "
-             "videoconvert ! video/x-raw,format=BGR ! "
-             "appsink name=appsink_raw max-buffers=1 drop=true sync=false";
+         "nvvideoconvert ! "
+         "video/x-raw(memory:NVMM),format=RGBA ! "  // VIC supports RGBA
+         "nvvideoconvert nvbuf-memory-type=nvbuf-mem-cuda-unified ! "  // Use CUDA for NVMM->system
+         "video/x-raw,format=RGBA ! "
+         "videoconvert ! "  // CPU videoconvert for RGBA->BGR
+         "video/x-raw,format=BGR ! "
+         "queue max-size-buffers=2 leaky=downstream ! "
+         "appsink name=appsink_raw max-buffers=1 drop=true sync=false";
     case OutputMode::COMPRESSED:
       // Compressed only - I420 to JPEG
       return src +
