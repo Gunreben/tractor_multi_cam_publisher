@@ -6,6 +6,8 @@ find_package(rclcpp REQUIRED)
 find_package(sensor_msgs REQUIRED)
 find_package(camera_calibration_parsers REQUIRED)
 find_package(PkgConfig REQUIRED)
+find_package(image_transport REQUIRED)
+
 pkg_check_modules(GSTREAMER REQUIRED gstreamer-1.0 gstreamer-app-1.0)
 
 add_executable(tractor_multi_cam_publisher
@@ -22,6 +24,7 @@ ament_target_dependencies(camera_info_publisher
 ament_target_dependencies(tractor_multi_cam_publisher
   rclcpp
   sensor_msgs
+  image_transport
 )
 
 target_include_directories(tractor_multi_cam_publisher PRIVATE
