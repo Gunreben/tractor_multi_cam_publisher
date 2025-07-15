@@ -91,7 +91,7 @@ def generate_launch_description():
         IncludeLaunchDescription(tractor_launch_file),
         
         # Blickfeld deactivated till presentation
-        #IncludeLaunchDescription(blickfeld_launch_file),
+        IncludeLaunchDescription(blickfeld_launch_file),
         
         # Ouster LiDAR
         IncludeLaunchDescription(
