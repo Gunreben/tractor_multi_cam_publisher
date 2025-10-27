@@ -1,0 +1,4 @@
+# ZED Camera Intrinsics
+# frame_id: zed_left_camera_optical_frame
+{image_width: 640, image_height: 360, camera_name: zed_left_camera, camera_matrix: {rows: 3, cols: 3, data: [267.44000244140625, 0.0, 317.864990234375, 0.0, 267.5299987792969, 174.08250427246094, 0.0, 0.0, 1.0]}, distortion_model: rational_polynomial, distortion_coefficients: {rows: 1, cols: 8, data: [-1.0929299592971802, 2.671180009841919, -0.0002514079969841987, -4.404849823913537e-05, 0.10725899785757065, -0.9946709871292114, 2.5193400382995605, 0.27934199571609497]}, rectification_matrix: {rows: 3, cols: 3, data: [1.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 1.0]}, projection_matrix: {rows: 3, cols: 4, data: [267.44000244140625, 0.0, 317.864990234375, 0.0, 0.0, 267.5299987792969, 174.08250427246094, 0.0, 0.0, 0.0, 1.0, 0.0]}}
+

@@ -21,6 +21,12 @@ ament_target_dependencies(camera_info_publisher
   camera_calibration_parsers
 )
 
+add_executable(zed_camera_info_publisher src/zed_camera_info_publisher.cpp)
+ament_target_dependencies(zed_camera_info_publisher
+  rclcpp
+  sensor_msgs
+)
+
 ament_target_dependencies(tractor_multi_cam_publisher
   rclcpp
   sensor_msgs
@@ -37,6 +43,7 @@ target_link_libraries(tractor_multi_cam_publisher
 install(TARGETS
   tractor_multi_cam_publisher
   camera_info_publisher
+  zed_camera_info_publisher
   DESTINATION lib/${PROJECT_NAME}
 )
 

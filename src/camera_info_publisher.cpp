@@ -72,11 +72,23 @@ public:
           RCLCPP_INFO(this->get_logger(), "Successfully loaded calibration data from %s (Internal name: %s)",
                        file_path.c_str(), internal_camera_name.c_str());
 
-          // Use the extracted name for topic and frame_id
-          camera_info.header.frame_id = extracted_name;
+          // Normalize distortion model for Foxglove compatibility
+          if (camera_info.distortion_model == "equidistant" || camera_info.distortion_model == "Equidistant" || camera_info.distortion_model == "fisheye") {
+            camera_info.distortion_model = "kannala_brandt";
+            if (camera_info.d.size() >= 4) {
+              camera_info.d = { camera_info.d[0], camera_info.d[1], camera_info.d[2], camera_info.d[3] };
+            } else {
+              while (camera_info.d.size() < 4) camera_info.d.push_back(0.0);
+            }
+            RCLCPP_WARN(this->get_logger(), "Mapped distortion model 'equidistant/fisheye' to 'kannala_brandt' with 4 coefficients for Foxglove compatibility.");
+          }
+
+          // Match image frame_id used in TractorMultiCamPublisher ("camera_" + label)
+          camera_info.header.frame_id = std::string("camera_") + extracted_name;
 
           // Create publisher using the extracted name for the topic
-          auto topic = std::string("/camera/") + extracted_name + "/camera_info";
+          // Follow ROS2 convention: camera_info should be at /camera/*/image_raw/camera_info
+          auto topic = std::string("/camera/") + extracted_name + "/image_raw/camera_info";
           auto pub = create_publisher<sensor_msgs::msg::CameraInfo>(topic, qos);
 
           publishers_[extracted_name] = pub;

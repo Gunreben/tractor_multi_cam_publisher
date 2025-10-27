@@ -80,6 +80,19 @@ def generate_launch_description():
     )
     
     #--------------------------------------------------------------------------
+    # Camera Info Publisher for 7 cameras
+    #--------------------------------------------------------------------------
+    camera_info_publisher_node = Node(
+        package='tractor_multi_cam_publisher',
+        executable='camera_info_publisher',
+        name='camera_info_publisher',
+        output='screen',
+        parameters=[
+            {'calibration_path': os.path.join(tractor_pkg_prefix, 'calibration')}
+        ]
+    )
+    
+    #--------------------------------------------------------------------------
     # Combine everything into the LaunchDescription
     #--------------------------------------------------------------------------
     return LaunchDescription([
@@ -89,6 +102,9 @@ def generate_launch_description():
         
         # Tractor multi camera
         IncludeLaunchDescription(tractor_launch_file),
+        
+        # Camera Info Publisher
+        camera_info_publisher_node,
         
         # Blickfeld deactivated till presentation
         IncludeLaunchDescription(blickfeld_launch_file),
