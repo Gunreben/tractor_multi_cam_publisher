@@ -64,6 +64,13 @@ public:
             continue; // Skip this file if name extraction failed
         }
 
+        // Skip ZED camera intrinsics - these are handled by zed_camera_info_publisher
+        if (extracted_name.rfind("zed_", 0) == 0 || extracted_name.find("zed") != std::string::npos) {
+            RCLCPP_INFO(this->get_logger(), "Skipping ZED intrinsics file '%s' (handled by zed_camera_info_publisher)",
+                        file_path.c_str());
+            continue;
+        }
+
         RCLCPP_INFO(this->get_logger(), "Attempting to load calibration from: %s for camera ID: %s",
                      file_path.c_str(), extracted_name.c_str());
 
