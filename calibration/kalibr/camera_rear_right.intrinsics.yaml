@@ -1,0 +1,3 @@
+# Kalibr calibration
+# camera_model: pinhole, distortion_model: equidistant
+{image_width: 1280, image_height: 720, camera_name: camera_rear_right, camera_matrix: {rows: 3, cols: 3, data: [630.7003542165014, 0, 616.0751113035825, 0, 630.2192834733675, 329.4759329944912, 0, 0, 1]}, distortion_model: equidistant, distortion_coefficients: {rows: 1, cols: 4, data: [0.01652226991165054, -0.15279911808296257, 0.15059617996344346, -0.051456740799302576]}, rectification_matrix: {rows: 3, cols: 3, data: [1, 0, 0, 0, 1, 0, 0, 0, 1]}, projection_matrix: {rows: 3, cols: 4, data: [630.7003542165014, 0, 616.0751113035825, 0, 0, 630.2192834733675, 329.4759329944912, 0, 0, 0, 1, 0]}}

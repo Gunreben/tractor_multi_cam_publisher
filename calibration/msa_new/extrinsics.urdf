@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<?xml-model href="https://raw.githubusercontent.com/ros/urdfdom/master/xsd/urdf.xsd" ?>
+<robot name="leipzig_tractor.bot0" xmlns="http://www.ros.org">
+  <link name="ouster"/>
+  <link name="camera_rear_left"/>
+  <link name="camera_rear_mid"/>
+  <link name="camera_rear_right"/>
+  <link name="camera_side_left"/>
+  <link name="camera_side_right"/>
+  <link name="zed_zed_node_left_raw_color"/>
+  <link name="zed_zed_node_right_raw_color"/>
+  <link name="novatel_oem7"/>
+  <link name="ouster_imu"/>
+  <joint name="camera_rear_left_joint" type="fixed">
+    <origin xyz="0.992307 -0.723447 -1.10403" rpy="0.354237 -2.51376 0.741413"/>
+    <parent link="ouster"/>
+    <child link="camera_rear_left"/>
+  </joint>
+  <joint name="camera_rear_mid_joint" type="fixed">
+    <origin xyz="1.07908 0.0087477 -1.15012" rpy="0.137981 -3.11007 1.5561"/>
+    <parent link="ouster"/>
+    <child link="camera_rear_mid"/>
+  </joint>
+  <joint name="camera_rear_right_joint" type="fixed">
+    <origin xyz="0.983102 0.735103 -1.09771" rpy="0.39263 2.54848 2.3069"/>
+    <parent link="ouster"/>
+    <child link="camera_rear_right"/>
+  </joint>
+  <joint name="camera_side_left_joint" type="fixed">
+    <origin xyz="0.524944 -0.891771 -0.651685" rpy="0.673336 -2.32848 0.0911685"/>
+    <parent link="ouster"/>
+    <child link="camera_side_left"/>
+  </joint>
+  <joint name="camera_side_right_joint" type="fixed">
+    <origin xyz="0.518363 0.859965 -0.646625" rpy="-2.3938 0.819432 0.0221712"/>
+    <parent link="ouster"/>
+    <child link="camera_side_right"/>
+  </joint>
+  <joint name="zed_zed_node_left_raw_color_joint" type="fixed">
+    <origin xyz="-0.0768204 -0.0578382 0.135811" rpy="-1.29245 0.0090095 1.55662"/>
+    <parent link="ouster"/>
+    <child link="zed_zed_node_left_raw_color"/>
+  </joint>
+  <joint name="zed_zed_node_right_raw_color_joint" type="fixed">
+    <origin xyz="-0.0802009 0.061684 0.135198" rpy="-1.29715 0.00501123 1.55956"/>
+    <parent link="ouster"/>
+    <child link="zed_zed_node_right_raw_color"/>
+  </joint>
+  <joint name="novatel_oem7_joint" type="fixed">
+    <origin xyz="-1.79252 -0.0301837 -2.16294" rpy="0.0624273 0.718659 0.0823612"/>
+    <parent link="ouster"/>
+    <child link="novatel_oem7"/>
+  </joint>
+  <joint name="ouster_imu_joint" type="fixed">
+    <origin xyz="0.117578 -0.0377632 0.0704673" rpy="-0.00122407 -0.00285919 3.13948"/>
+    <parent link="ouster"/>
+    <child link="ouster_imu"/>
+  </joint>
+</robot>

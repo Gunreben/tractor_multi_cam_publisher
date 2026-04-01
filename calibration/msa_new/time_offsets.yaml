@@ -1,0 +1,11 @@
+# Calibration Anywhere by Main Street Autonomy
+# log: LZUNI.Tractor.vario_724.2025-11-21.09-18-23.01
+# Time offsets are listed in seconds.
+/novatel/oem7/fix: 0
+/camera/rear_left/image_raw/compressed: -0.096864100000000009
+/camera/rear_mid/image_raw/compressed: -0.102715324
+/camera/rear_right/image_raw/compressed: -0.105013114
+/camera/side_left/image_raw/compressed: -0.10122823
+/camera/side_right/image_raw/compressed: -0.100053696
+/zed/zed_node/left_raw/image_raw_color/compressed: 0.0078975820000000002
+/zed/zed_node/right_raw/image_raw_color/compressed: 0.0079024770000000015

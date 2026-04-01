@@ -1,0 +1,42 @@
+# bot0
+# Calibration Anywhere by Main Street Autonomy
+# log: LZUNI.Tractor.vario_724.2025-11-21.09-18-23.01
+# 
+# Position xyz; Quaternions xyzw
+# [ x_m, y_m, z_m, qx, qy, qz, qw]
+camera_rear_left:
+  parent: "ouster"
+  child: "camera_rear_left"
+  value: [0.992307, -0.723447, -1.104025, -0.389890, 0.852944, -0.266315, -0.222597]
+camera_rear_mid:
+  parent: "ouster"
+  child: "camera_rear_mid"
+  value: [1.079085, 0.008748, -1.150118, -0.700908, 0.709739, -0.060133, 0.037179]
+camera_rear_right:
+  parent: "ouster"
+  child: "camera_rear_right"
+  value: [0.983102, 0.735103, -1.097707, -0.834365, 0.432307, 0.186401, 0.286706]
+camera_side_left:
+  parent: "ouster"
+  child: "camera_side_left"
+  value: [0.524944, -0.891771, -0.651685, 0.170002, -0.860072, 0.320110, 0.359033]
+camera_side_right:
+  parent: "ouster"
+  child: "camera_side_right"
+  value: [0.518363, 0.859965, -0.646625, -0.855424, 0.136021, 0.374518, 0.330884]
+zed_zed_node_left_raw_color:
+  parent: "ouster"
+  child: "zed_zed_node_left_raw_color"
+  value: [-0.076820, -0.057838, 0.135811, -0.431331, -0.420207, 0.562438, 0.566606]
+zed_zed_node_right_raw_color:
+  parent: "ouster"
+  child: "zed_zed_node_right_raw_color"
+  value: [-0.080201, 0.061684, 0.135198, -0.430924, -0.423301, 0.561425, 0.565617]
+novatel_oem7:
+  parent: "ouster"
+  child: "novatel_oem7"
+  value: [-1.792524, -0.030184, -2.162943, 0.014721, 0.352380, 0.027556, 0.935335]
+ouster_imu:
+  parent: "ouster"
+  child: "ouster_imu"
+  value: [0.117578, -0.037763, 0.070467, 0.001429, -0.000614, 0.999998, 0.001059]

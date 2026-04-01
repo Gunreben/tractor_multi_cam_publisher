@@ -1,0 +1,3 @@
+# Calibration Anywhere by Main Street Autonomy
+# log: LZUNI.Tractor.vario_724.2025-11-21.09-18-23.01
+{image_width: 1280, image_height: 720, camera_name: camera_rear_left, camera_matrix: {rows: 3, cols: 3, data: [634.51516729910838, 0, 633.69404729246571, 0, 634.21459043054415, 361.61185434933947, 0, 0, 1]}, distortion_model: equidistant, distortion_coefficients: {rows: 1, cols: 5, data: [-0.030812864931901305, -0.0086398360548946233, -0.0019995184405906144, 0.001228381847081776, 0]}, rectification_matrix: {rows: 3, cols: 3, data: [1, 0, 0, 0, 1, 0, 0, 0, 1]}, readout_time_sec: 0.0091975681750309651, projection_matrix: {rows: 3, cols: 4, data: [634.51516729910838, 0, 633.69404729246571, 0, 0, 634.21459043054415, 361.61185434933947, 0, 0, 0, 1, 0]}}
